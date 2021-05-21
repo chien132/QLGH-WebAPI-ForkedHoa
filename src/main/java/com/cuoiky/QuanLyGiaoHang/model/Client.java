@@ -22,20 +22,21 @@ public class Client {
 	private String phone;
 	private String address;
 	
-	@OneToMany(mappedBy = "client",fetch = FetchType.EAGER)
-	private Collection<Task> task;
+//	@OneToMany(mappedBy = "client",fetch = FetchType.EAGER)
+//	private Collection<Task> task;
 	
 	
 	public Client() {}
 
 	
 
-	public Client(int clientid, String company, String phone, String address, Collection<Task> task) {
+	public Client(int clientid, String company, String phone, String address) {
+		//, Collection<Task> task
 		this.clientid = clientid;
 		this.company = company;
 		this.phone = phone;
 		this.address = address;
-		this.task = task;
+//		this.task = task;
 	}
 
 
@@ -80,14 +81,14 @@ public class Client {
 	}
 
 
-	public Collection<Task> getTask() {
-		return task;
-	}
-
-
-	public void setTask(Collection<Task> task) {
-		this.task = task;
-	}
-	
+//	public Collection<Task> getTask() {
+//		return task;
+//	}
+//
+//
+//	public void setTask(Collection<Task> task) {
+//		this.task = task;
+//	}
+//	
 	
 }

@@ -41,13 +41,14 @@ public class Task {
 	@JoinColumn(name = "clientid")
 	private Client client;
 	
-	@OneToMany(mappedBy = "task",fetch = FetchType.EAGER)
-	private Collection<TaskDetail> taskDetails;
+//	@OneToMany(mappedBy = "task",fetch = FetchType.EAGER)
+//	private Collection<TaskDetail> taskDetails;
 	
 	public Task() {}
 
-	public Task(int id, Date pickup, Date dropoff, boolean approve, boolean taskpublic, boolean cancel, Client client,
-			Collection<TaskDetail> taskDetails) {
+	public Task(int id, Date pickup, Date dropoff, boolean approve, boolean taskpublic, boolean cancel, Client client
+			) {
+		//Collection<TaskDetail> taskDetails
 		this.id = id;
 		this.pickup = pickup;
 		this.dropoff = dropoff;
@@ -55,7 +56,7 @@ public class Task {
 		this.taskpublic = taskpublic;
 		this.cancel = cancel;
 		this.client = client;
-		this.taskDetails = taskDetails;
+		//this.taskDetails = taskDetails;
 	}
 
 	public int getId() {
@@ -114,14 +115,14 @@ public class Task {
 		this.client = client;
 	}
 
-	public Collection<TaskDetail> getTaskDetails() {
-		return taskDetails;
-	}
-
-	public void setTaskDetails(Collection<TaskDetail> taskDetails) {
-		this.taskDetails = taskDetails;
-	}
-	
+//	public Collection<TaskDetail> getTaskDetails() {
+//		return taskDetails;
+//	}
+//
+//	public void setTaskDetails(Collection<TaskDetail> taskDetails) {
+//		this.taskDetails = taskDetails;
+//	}
+//	
 	
 	
 	
