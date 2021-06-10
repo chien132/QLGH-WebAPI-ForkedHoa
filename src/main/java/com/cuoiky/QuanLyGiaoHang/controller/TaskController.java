@@ -57,7 +57,14 @@ public class TaskController {
 		
 		service.save(task);
 	}
-	
+	@PostMapping("/UpdateTaskClient/{idClient}")
+	public void updateTask(@RequestBody Task task,@PathVariable Integer idClient) {
+		
+		Client temp = ClientService.get(idClient);
+		task.setClient(temp);
+		
+		service.save(task);
+	}
 }
 
 

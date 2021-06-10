@@ -34,23 +34,26 @@ public class TaskDetail {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date end_task;
 	
-	private String task_node;
+	private String task_note;
 	
 	@ManyToOne
 	@JoinColumn(name = "task_id")
 	private Task task;
 
+	private String chat;
+	
 	public TaskDetail() {}
 
 	
 	
-	public TaskDetail(int id, User user, Date start_task, Date end_task, String task_node, Task task) {
+	public TaskDetail(int id, User user, Date start_task, Date end_task, String task_note, Task task,String chat) {
 		this.id = id;
 		this.user = user;
 		this.start_task = start_task;
 		this.end_task = end_task;
-		this.task_node = task_node;
+		this.setTask_note(task_note);
 		this.task = task;
+		this.chat=chat;
 	}
 
 
@@ -87,13 +90,7 @@ public class TaskDetail {
 		this.end_task = end_task;
 	}
 
-	public String getTask_node() {
-		return task_node;
-	}
 
-	public void setTask_node(String task_node) {
-		this.task_node = task_node;
-	}
 
 	public Task getTask() {
 		return task;
@@ -101,6 +98,30 @@ public class TaskDetail {
 
 	public void setTask(Task task) {
 		this.task = task;
+	}
+
+
+
+	public String getTask_note() {
+		return task_note;
+	}
+
+
+
+	public void setTask_note(String task_note) {
+		this.task_note = task_note;
+	}
+
+
+
+	public String getChat() {
+		return chat;
+	}
+
+
+
+	public void setChat(String chat) {
+		this.chat = chat;
 	}
 	
 	

@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cuoiky.QuanLyGiaoHang.model.TaskDetail;
@@ -41,5 +43,61 @@ public class TaskDetailController {
 	public void delete(@PathVariable Integer id) {
 		service.delete(id);
 	}
-
+	
+	// lay task theo id tai xe 
+	@GetMapping("/taskdetail/{idtaixe}")
+	public List<TaskDetail> layTask(@PathVariable int idtaixe ) {
+		return service.layTaskTheoId(idtaixe);
+	}
+	/// chat
+	
+	@PostMapping("/chat")
+	@ResponseBody
+	public void updateChat(@RequestParam("idTaskDetail") int id,@RequestBody String strChat) {
+		service.updateChat(strChat, id);
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

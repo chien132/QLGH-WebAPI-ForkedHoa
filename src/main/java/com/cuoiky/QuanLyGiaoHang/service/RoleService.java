@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cuoiky.QuanLyGiaoHang.model.Role;
+import com.cuoiky.QuanLyGiaoHang.model.User;
 import com.cuoiky.QuanLyGiaoHang.repository.RoleRepository;
 
 @Service
@@ -29,4 +30,21 @@ public class RoleService {
 	public void delete(Integer id) {
 		repo.deleteById(id);
 	}
+	
+
+
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

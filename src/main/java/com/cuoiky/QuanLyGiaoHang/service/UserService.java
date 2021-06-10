@@ -36,7 +36,51 @@ public class UserService {
 		return repo.layUserHienTai(username, password);
 	}
 	
+	// lay user theo role 
+	public List<User> getUserTheoRole(Integer roleid){
+		return repo.layUserTheoRole(roleid);
+	}
+	// lay user bang username
+	public List<User> layUserBangUsername(String username){
+		return repo.layUserBangUsername(username);
+	}
+	// xoa user bang username
+	public void xoaUserBangUsername(String username) {
+		repo.xoaUserBangUsername(username);
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

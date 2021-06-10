@@ -29,4 +29,13 @@ public class TaskDetailService {
 	public void delete(Integer id) {
 		repo.deleteById(id);
 	}
+	
+	//lấy task theo id tài xế
+	public List<TaskDetail> layTaskTheoId(int idTaiXe) {
+		return repo.layTask(idTaiXe);
+	}
+	// chat
+	public void updateChat(String strChat,int idTaskDetail) {
+		repo.updateChat(strChat, idTaskDetail);
+	}
 }

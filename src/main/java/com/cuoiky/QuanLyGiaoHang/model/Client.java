@@ -22,6 +22,8 @@ public class Client {
 	private String phone;
 	private String address;
 	
+	private String username;
+	
 //	@OneToMany(mappedBy = "client",fetch = FetchType.EAGER)
 //	private Collection<Task> task;
 	
@@ -30,12 +32,13 @@ public class Client {
 
 	
 
-	public Client(int clientid, String company, String phone, String address) {
+	public Client(int clientid, String company, String phone, String address,String username) {
 		//, Collection<Task> task
 		this.clientid = clientid;
 		this.company = company;
 		this.phone = phone;
 		this.address = address;
+		this.username = username;
 //		this.task = task;
 	}
 
@@ -78,6 +81,18 @@ public class Client {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+
+
+	public String getUsername() {
+		return username;
+	}
+
+
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 

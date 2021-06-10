@@ -42,4 +42,45 @@ public class ClientController {
 	public void delete(@PathVariable Integer id) {
 		service.delete(id);
 	}
+	// xoa client theo username
+	@PostMapping("/client/delete/{username}")
+	public void xoaClientTheoUsername(@PathVariable String username) {
+		service.xoaClienttheousername(username);
+	}
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

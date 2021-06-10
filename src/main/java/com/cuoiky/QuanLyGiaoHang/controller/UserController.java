@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cuoiky.QuanLyGiaoHang.model.Client;
 import com.cuoiky.QuanLyGiaoHang.model.Role;
+import com.cuoiky.QuanLyGiaoHang.model.Task;
 import com.cuoiky.QuanLyGiaoHang.model.User;
 import com.cuoiky.QuanLyGiaoHang.service.RoleService;
 import com.cuoiky.QuanLyGiaoHang.service.UserService;
@@ -61,16 +63,17 @@ public class UserController {
 	
 	
 	// Thêm và sửa Role vào User
-	@PostMapping("/user/{userid}/role/{roleid}")
-	public void addUser(@PathVariable Integer userid,@PathVariable Integer roleid) {
-		
-		User temp = userSV.get(userid);
-		Role temp2 = roleSV.get(roleid);
-		temp.setRole(temp2);
-		
-		userSV.save(temp);
-	}
 
+	@PostMapping("/AddUser/{idRole}")
+	public void addtaskIDclient(@RequestBody User user,@PathVariable Integer idRole) {
+		
+		Role temp = roleSV.get(idRole);
+		user.setRole(temp);
+		
+		userSV.save(user);
+	}
+	
+	
 	@GetMapping("/login")
 	@ResponseBody
 	public List<User> layUserHienTai(@RequestParam("username") String username,@RequestParam("password") String password){
@@ -79,7 +82,24 @@ public class UserController {
 		return list;	
 	}
 	
-
+	//lấy User theo role
+	@GetMapping("/users/role/{roleid}")
+	public List<User> layUserTheoRole(@PathVariable Integer roleid){
+		List<User> list = userSV.getUserTheoRole(roleid);
+		
+		return list;
+	}
+	
+	// lay user bang username
+	@GetMapping("/user/username/{username}")
+	public List<User> layUserTheoUsername(@PathVariable String username){
+		List<User> list  =  userSV.layUserBangUsername(username);
+		return list;
+	}
+	@PostMapping("/user/delete/{username}")
+	public void xoaUserBangUsername(@PathVariable String username) {
+		userSV.xoaUserBangUsername(username);
+	}
 }
 
 

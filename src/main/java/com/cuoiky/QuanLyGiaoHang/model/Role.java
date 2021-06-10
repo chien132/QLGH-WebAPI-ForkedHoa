@@ -3,6 +3,7 @@ package com.cuoiky.QuanLyGiaoHang.model;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,18 +23,19 @@ public class Role {
 	
 	private String rolename;
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "role")
-	private Collection<User> user;
+	
+//	@OneToMany(mappedBy = "role",fetch = FetchType.EAGER)
+//	private Collection<User> user;
 	
 	public Role() {
 		
 	}
 
-	public Role(int id, String rolename, Collection<User> user) {
+	public Role(int id, String rolename) {
+//, Collection<User> user
 		this.id = id;
 		this.rolename = rolename;
-		this.user = user;
+		//this.user = user;
 	}
 
 	public int getId() {
@@ -52,13 +54,13 @@ public class Role {
 		this.rolename = rolename;
 	}
 
-	public Collection<User> getUser() {
-		return user;
-	}
-
-	public void setUser(Collection<User> user) {
-		this.user = user;
-	}
+//	public Collection<User> getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(Collection<User> user) {
+//		this.user = user;
+//	}
 
 	
 	

@@ -29,4 +29,9 @@ public class ClientService {
 	public void delete(Integer id) {
 		repo.deleteById(id);
 	}
+	
+	// xoa client theo username
+	public void xoaClienttheousername(String username) {
+		repo.xoaClientTheoUsername(username);
+	}
 }
