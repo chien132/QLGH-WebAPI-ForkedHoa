@@ -17,8 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cuoiky.QuanLyGiaoHang.model.Client;
 import com.cuoiky.QuanLyGiaoHang.model.Role;
 import com.cuoiky.QuanLyGiaoHang.model.Task;
+import com.cuoiky.QuanLyGiaoHang.model.TaskDetail;
 import com.cuoiky.QuanLyGiaoHang.model.User;
 import com.cuoiky.QuanLyGiaoHang.service.RoleService;
+import com.cuoiky.QuanLyGiaoHang.service.TaskDetailService;
+import com.cuoiky.QuanLyGiaoHang.service.TaskService;
 import com.cuoiky.QuanLyGiaoHang.service.UserService;
 
 
@@ -30,6 +33,9 @@ public class UserController {
 	
 	@Autowired 
 	RoleService roleSV;
+	
+	@Autowired
+	TaskDetailService taskDetailSV;
 
 //	@Autowired
 //	UserRepository userRepo;
@@ -99,6 +105,14 @@ public class UserController {
 	@PostMapping("/user/delete/{username}")
 	public void xoaUserBangUsername(@PathVariable String username) {
 		userSV.xoaUserBangUsername(username);
+	}
+	
+	// lay user theo taskid nguon task
+	@GetMapping("/user/taskid/{taskid}")
+	public User layUsertheoTaskidnguontask(@PathVariable int taskid){
+		List<TaskDetail> taskDetail = taskDetailSV.layTaskdetailsTheotaskId(taskid);
+		User user = taskDetail.get(0).getUser();
+		return user;
 	}
 }
 

@@ -58,9 +58,8 @@ public class TaskDetailController {
 	/// chat
 	
 	@PostMapping("/chat/{idTaskDetail}")
-	@ResponseBody
-	public void updateChat(@PathVariable int id,@RequestBody String strChat) {
-		service.updateChat(strChat, id);
+	public void updateChat(@PathVariable int idTaskDetail,@RequestBody String strChat) {
+		service.updateChat(strChat, idTaskDetail);
 	}
 
 	// add taskdetails
