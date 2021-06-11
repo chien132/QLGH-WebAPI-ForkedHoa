@@ -22,4 +22,9 @@ public interface TaskDetailRepository extends	JpaRepository<TaskDetail, Integer>
 	@Query("UPDATE TaskDetail v SET v.chat = :strChat WHERE v.id = :idTaskDetail")
 	void updateChat(@Param("strChat") String strChat,@Param("idTaskDetail") int idTaskDetail);
 	
+	//lay task detail theo taskId
+	@Query("SELECT v FROM TaskDetail v WHERE v.task.id= :taskId")
+	List<TaskDetail> layTaskDetailTheoTaskID(@Param("taskId") int taskId);
+	
+
 }

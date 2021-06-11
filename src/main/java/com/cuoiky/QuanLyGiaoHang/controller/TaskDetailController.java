@@ -12,13 +12,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cuoiky.QuanLyGiaoHang.model.Task;
 import com.cuoiky.QuanLyGiaoHang.model.TaskDetail;
+import com.cuoiky.QuanLyGiaoHang.model.User;
 import com.cuoiky.QuanLyGiaoHang.service.TaskDetailService;
+import com.cuoiky.QuanLyGiaoHang.service.UserService;
 
 @RestController
 public class TaskDetailController {
 	@Autowired
 	private TaskDetailService service;
+	
+	@Autowired
+	private UserService userSV;
 	
 	@GetMapping("/taskdetails")
 	public List<TaskDetail> list(){
@@ -44,18 +50,33 @@ public class TaskDetailController {
 		service.delete(id);
 	}
 	
-	// lay task theo id tai xe 
+	// lay taskdetails theo id tai xe 
 	@GetMapping("/taskdetail/{idtaixe}")
 	public List<TaskDetail> layTask(@PathVariable int idtaixe ) {
 		return service.layTaskTheoId(idtaixe);
 	}
 	/// chat
 	
-	@PostMapping("/chat")
+	@PostMapping("/chat/{idTaskDetail}")
 	@ResponseBody
-	public void updateChat(@RequestParam("idTaskDetail") int id,@RequestBody String strChat) {
+	public void updateChat(@PathVariable int id,@RequestBody String strChat) {
 		service.updateChat(strChat, id);
 	}
+
+	// add taskdetails
+	@PostMapping("/addTaskdetails/{idUser}")
+	public void themTaskDetais(@RequestBody TaskDetail taskDetail,@PathVariable int idUser) {
+		// vi luc add user torng taskdetail bij null nen phai gan duoi db;
+		User user = userSV.get(idUser);
+		taskDetail.setUser(user);
+		service.save(taskDetail);
+	}
+	//lay taskdetail theo taskId
+	@GetMapping("/taskdetails/taskId/{taskId}")
+	public List<TaskDetail> layTaskdetailsTheoTaskid(@PathVariable int taskId){
+		return service.layTaskdetailsTheotaskId(taskId);
+	}
+	
 	
 }
 

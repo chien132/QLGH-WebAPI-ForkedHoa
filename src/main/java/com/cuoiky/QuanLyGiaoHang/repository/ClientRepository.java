@@ -1,5 +1,7 @@
 package com.cuoiky.QuanLyGiaoHang.repository;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,4 +16,8 @@ public interface ClientRepository extends JpaRepository<Client, Integer>{
 	@Modifying
 	@Query("DELETE FROM Client v WHERE v.username= :username")
 	void xoaClientTheoUsername(@Param("username") String username);
+	
+	// lay client theo username
+	@Query("SELECT v FROM Client v WHERE v.username= :username")
+	Client layClientTheoUsername(@Param("username") String username);
 }

@@ -34,4 +34,22 @@ public class ClientService {
 	public void xoaClienttheousername(String username) {
 		repo.xoaClientTheoUsername(username);
 	}
+	
+	// lay client theo username 
+	public Client layClientTheoUsername(String username){
+		return repo.layClientTheoUsername(username);
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

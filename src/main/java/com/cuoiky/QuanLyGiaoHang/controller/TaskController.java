@@ -65,6 +65,28 @@ public class TaskController {
 		
 		service.save(task);
 	}
+	
+	
+	//lay task chua approve
+	@GetMapping("/task/noApprove")
+	public List<Task> layTaskChuaApprove(){
+		return service.layTaskTheoApprove(false);
+	}
+	//lay task theo idCLient
+	
+	@GetMapping("/task/idclient/{idclient}")
+	public List<Task> layTaskTheoIdClient(@PathVariable int idclient){
+		return service.layTaskTheoIdClient(idclient);
+	}
+	
+	// lay task theo idLient Ngườn từ User
+	@GetMapping("/task/username/{username}")
+	public List<Task> layTaskTheoIdclientNguonUser(@PathVariable String username){
+		Client client = ClientService.layClientTheoUsername(username);
+		int idClient = client.getClientid();
+		
+		return service.layTaskTheoIdClient(idClient);
+	}
 }
 
 

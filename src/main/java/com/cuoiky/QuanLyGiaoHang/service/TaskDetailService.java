@@ -38,4 +38,21 @@ public class TaskDetailService {
 	public void updateChat(String strChat,int idTaskDetail) {
 		repo.updateChat(strChat, idTaskDetail);
 	}
+	
+	public List<TaskDetail> layTaskdetailsTheotaskId(int taskId) {
+		return repo.layTaskDetailTheoTaskID(taskId);
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
